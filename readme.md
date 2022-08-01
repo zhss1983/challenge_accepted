@@ -115,7 +115,7 @@ python division/run_client.py
 python3 -m venv senv 
 . senv/bin/activate
 python -m pip install --upgrade pip
-pip install ioahttp getch
+pip install ioahttp pygame
 ```
 
 Запуск:

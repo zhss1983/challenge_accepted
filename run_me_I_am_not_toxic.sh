@@ -5,4 +5,4 @@ python3 -m venv env
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
-python async_matrix/run_server.py & python division/division_client.py
+python async_matrix/run_server.py & python division/run_client.py

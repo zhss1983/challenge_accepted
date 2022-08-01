@@ -44,7 +44,7 @@ class Drop(BaseDrop):
         if text == "":
             self.font_index += 10
 
-    async def blit(self, surface: pygame.Surface):
+    def blit(self, surface: pygame.Surface):
         for shift, char in enumerate(self.__text):
             if char not in self.__chars_rendered:
                 return surface

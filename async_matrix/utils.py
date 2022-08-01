@@ -5,13 +5,13 @@ from constants import *
 from mechanics import Point, Drop
 
 
-async def get_window_surface():
+def get_window_surface():
     surface = pygame.display.set_mode((PANEL_WIDTH, PANEL_HIGHLY))
     surface.fill((0, 0, 0))
     return surface
 
 
-async def get_background_surface():
+def get_background_surface():
     surface = pygame.Surface((PANEL_WIDTH, PANEL_HIGHLY), flags=pygame.SRCALPHA)
     surface.fill(pygame.Color(0, 0, 0, 28))
     return surface
@@ -41,7 +41,7 @@ def chars_render(color: tuple[int, int, int]):
     return chars
 
 
-async def is_exit_event():
+def is_exit_event():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return True
