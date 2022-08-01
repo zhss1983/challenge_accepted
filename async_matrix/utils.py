@@ -35,7 +35,7 @@ def random_start_coordinate(max_pos: int = PANEL_WIDTH - FONT_PX):
     return Point(random.randint(0, max_pos), 0)
 
 
-def chars_render(color: tuple[int, int, int]):
+def chars_render(color):
     fonts = get_fonts()
     chars = {char: [font.render(char, True, color) for font in fonts] for char in LETTER}
     return chars
