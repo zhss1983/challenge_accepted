@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 import random
 import pygame
-from constants import *
+from constants import FONT_PX, FONTS_COUNT, PANEL_HIGHLY, TEXT_VECTOR
 
 
 @dataclass

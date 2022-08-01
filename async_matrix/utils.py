@@ -1,7 +1,7 @@
 import random
 import pygame
 
-from constants import *
+from constants import BASEDIR, FONT_PX, FONTS_COUNT, LETTER, PANEL_WIDTH, PANEL_HIGHLY, Q_KEY, SPACE
 from mechanics import Point, Drop
 
 

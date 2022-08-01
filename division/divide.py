@@ -25,7 +25,7 @@ class Divider:
 
     @property
     def is_devision(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     @property
     def message(self):

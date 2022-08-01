@@ -2,7 +2,7 @@ import random
 import pygame
 import asyncio
 
-from constants import *
+from constants import COLUMN, MATRIX_SPEED_DALAY
 from utils import get_window_surface, get_background_surface, chars_render, drop_init, is_exit_event, random_wind
 
 drops = []

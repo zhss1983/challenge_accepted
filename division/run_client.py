@@ -4,7 +4,7 @@ from aiohttp.client_exceptions import ClientError, ClientConnectorError
 
 from divide import Divider, Divisible
 from utils import get_numbers
-from constants import *
+from constants import EXIT_KEY, MAX_DECIMAL_PLACES, HOST
 from logger import logger
 
 
