@@ -24,8 +24,9 @@ async def run():
     exit_event = is_exit_event()
     while not exit_event:
         window.blit(background, (0, 0))
-
-        for drop_index in range(COLUMN):
+        drop_index = 0
+        # for drop_index in range(COLUMN):
+        while drop_index < len(drops):
             drop = drops[drop_index]
             window = drop.blit(window)
             if drop.is_down or random.random() > 0.99:
@@ -33,7 +34,10 @@ async def run():
                 drops.pop(drop_index)
                 if len(drops) < COLUMN:
                     drops.append(drop_init(chars_red))
+            else:
+                drop_index += 1
             drop.wind = drop.wind * 0.95 + 0.05 * set_wind
+
 
         pygame.display.flip()
         exit_event = is_exit_event()
