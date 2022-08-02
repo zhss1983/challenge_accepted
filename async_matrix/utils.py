@@ -1,7 +1,7 @@
 import random
 import pygame
 
-from constants import BASEDIR, FONT_PX, FONTS_COUNT, LETTER, PANEL_WIDTH, PANEL_HIGHLY, Q_KEY, SPACE, TEXT_VECTOR
+from constants import BASEDIR, FONT_PX, FONTS_COUNT, LETTER, MIN_DEAD_LEVEL, PANEL_WIDTH, PANEL_HIGHLY, PROBABILITI_DEAD, Q_KEY, SPACE, TEXT_VECTOR
 from mechanics import Point, Drop
 
 
@@ -62,3 +62,7 @@ async def drop_init(chars, text: str = ""):
 
 def random_wind():
     return random.random() - 0.5
+
+
+def random_dead(high, *, min_high: int = MIN_DEAD_LEVEL):
+    return high > min_high and random.random() > PROBABILITI_DEAD

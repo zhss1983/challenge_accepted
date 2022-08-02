@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 import random
 import pygame
 from constants import FONT_PX, FONTS_COUNT, PANEL_HIGHLY, Point, TEXT_VECTOR
@@ -23,7 +21,7 @@ class BaseDrop:
     def __get_wind(self):
         return self.__class__.__wind
 
-    wind = property(__get_wind, __set_wind, None, "Устанавливает ветер для падающих объектов")
+    wind = property(__get_wind, __set_wind, None, "Ветер для падающих объектов")
 
 
 class Drop(BaseDrop):
@@ -47,7 +45,6 @@ class Drop(BaseDrop):
             pos_y = self.position.y + shift * FONT_PX * TEXT_VECTOR.y
             surface.blit(char_img, (pos_x, pos_y))
         self.flow()
-        #return surface
 
     @property
     def is_down(self):

@@ -1,9 +1,16 @@
-import random
 import pygame
 import asyncio
 
 from constants import COLUMN, MATRIX_SPEED_DALAY
-from utils import get_window_surface, get_background_surface, chars_render, drop_init, is_exit_event, random_wind
+from utils import (
+    get_window_surface,
+    get_background_surface,
+    chars_render,
+    drop_init,
+    is_exit_event,
+    random_wind,
+    random_dead,
+)
 
 drops = []
 pygame.init()
@@ -26,12 +33,10 @@ async def run():
     while not exit_event:
         window.blit(background, (0, 0))
         drop_index = 0
-        # for drop_index in range(COLUMN):
         while drop_index < len(drops):
             drop = drops[drop_index]
-            #window = drop.blit(window)
             drop.blit(window)
-            if drop.is_down or random.random() > 0.99:
+            if drop.is_down or random_dead(drop.position.y):
                 set_wind = random_wind()
                 drops.pop(drop_index)
                 if len(drops) < COLUMN:
@@ -40,7 +45,6 @@ async def run():
             else:
                 drop_index += 1
             drop.wind = drop.wind * 0.95 + 0.05 * set_wind
-
 
         pygame.display.flip()
         exit_event = is_exit_event()
