@@ -10,7 +10,6 @@ from logger import logger
 
 
 async def run():
-    print("Для выхода нажмите: q.")
     divisible = Divisible(MAX_DECIMAL_PLACES)
     div_on_3 = Divider(divisible, ["foo", "FOO", "Foo"])
     div_on_5 = Divider(divisible, ["bar", "BAR", "Bar"])
