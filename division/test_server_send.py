@@ -8,6 +8,9 @@ from divide import Divider, Divisible
 from constants import MAX_DECIMAL_PLACES, HOST
 from logger import logger
 
+MESSAGE_COUNT = 10000  # 100
+DELAY = 0.001  # 1
+
 
 async def run():
     divisible = Divisible(MAX_DECIMAL_PLACES)
@@ -15,7 +18,7 @@ async def run():
     div_on_5 = Divider(divisible, ["bar", "BAR", "Bar"])
 
     logger.info("Запущен цикл тестовой отправки сообщений. Логируются только ошибки.")
-    for count in range(100):
+    for count in range(MESSAGE_COUNT):
         msg = div_on_3.message if random.random() > 0.5 else ""
         msg += div_on_5.message if random.random() > 0.5 else ""
         if msg:
@@ -29,7 +32,7 @@ async def run():
                 logger.exception("Нет связи с сервером (%s).", HOST)
             except ClientError:
                 logger.exception("Сервер (%s) ответил не корректно.", HOST)
-        await asyncio.sleep(1)
+        await asyncio.sleep(DELAY)
 
 
 if __name__ == "__main__":
