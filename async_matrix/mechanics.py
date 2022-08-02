@@ -2,13 +2,7 @@ from dataclasses import dataclass
 
 import random
 import pygame
-from constants import FONT_PX, FONTS_COUNT, PANEL_HIGHLY, TEXT_VECTOR
-
-
-@dataclass
-class Point:
-    x: int
-    y: int
+from constants import FONT_PX, FONTS_COUNT, PANEL_HIGHLY, Point, TEXT_VECTOR
 
 
 class BaseDrop:
@@ -49,12 +43,15 @@ class Drop(BaseDrop):
             if char not in self.__chars_rendered:
                 return surface
             char_img = self.__chars_rendered[char][self.font_index]
-            pos_x = self.position.x + shift * FONT_PX * TEXT_VECTOR[0]
-            pos_y = self.position.y + shift * FONT_PX * TEXT_VECTOR[1]
+            pos_x = self.position.x + shift * FONT_PX * TEXT_VECTOR.x
+            pos_y = self.position.y + shift * FONT_PX * TEXT_VECTOR.y
             surface.blit(char_img, (pos_x, pos_y))
         self.flow()
-        return surface
+        #return surface
 
     @property
     def is_down(self):
-        return self.position.y - len(self.__text) * FONT_PX >= PANEL_HIGHLY
+        tail_length = len(self.__text) * FONT_PX * TEXT_VECTOR.y
+        tail_out_of_windov = self.position.y + tail_length >= PANEL_HIGHLY
+        had_out_of_windov = self.position.y >= PANEL_HIGHLY
+        return tail_out_of_windov and had_out_of_windov

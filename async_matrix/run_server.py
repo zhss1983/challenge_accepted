@@ -6,7 +6,8 @@ from aiohttp import web
 
 async def handle(request):
     text = request.match_info.get("message", "")
-    drops.append(drop_init(chars_green, text))
+    drop = await drop_init(chars_green, text)
+    drops.append(drop)
     return web.Response(text=text)
 
 

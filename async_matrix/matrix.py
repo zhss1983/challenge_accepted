@@ -17,7 +17,8 @@ async def run():
     background = get_background_surface()
 
     for _ in range(COLUMN):
-        drops.append(drop_init(chars_red))
+        new_drop = await drop_init(chars_red)
+        drops.append(new_drop)
 
     set_wind = random_wind()
 
@@ -28,12 +29,14 @@ async def run():
         # for drop_index in range(COLUMN):
         while drop_index < len(drops):
             drop = drops[drop_index]
-            window = drop.blit(window)
+            #window = drop.blit(window)
+            drop.blit(window)
             if drop.is_down or random.random() > 0.99:
                 set_wind = random_wind()
                 drops.pop(drop_index)
                 if len(drops) < COLUMN:
-                    drops.append(drop_init(chars_red))
+                    new_drop = await drop_init(chars_red)
+                    drops.append(new_drop)
             else:
                 drop_index += 1
             drop.wind = drop.wind * 0.95 + 0.05 * set_wind

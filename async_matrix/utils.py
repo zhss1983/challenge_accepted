@@ -1,7 +1,7 @@
 import random
 import pygame
 
-from constants import BASEDIR, FONT_PX, FONTS_COUNT, LETTER, PANEL_WIDTH, PANEL_HIGHLY, Q_KEY, SPACE
+from constants import BASEDIR, FONT_PX, FONTS_COUNT, LETTER, PANEL_WIDTH, PANEL_HIGHLY, Q_KEY, SPACE, TEXT_VECTOR
 from mechanics import Point, Drop
 
 
@@ -51,11 +51,11 @@ def is_exit_event():
     return False
 
 
-def drop_init(chars, text: str = ""):
+async def drop_init(chars, text: str = ""):
     return Drop(
         chars_rendered=chars,
         text=text or random_letter(),
-        position=random_start_coordinate(PANEL_WIDTH - len(text) * FONT_PX),
+        position=random_start_coordinate(PANEL_WIDTH - len(text) * FONT_PX * TEXT_VECTOR.x),
         speed=random_speed(),
     )
 
