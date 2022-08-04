@@ -29,8 +29,7 @@ async def run():
 
     set_wind = random_wind()
 
-    exit_event = is_exit_event()
-    while not exit_event:
+    while not is_exit_event():
         window.blit(background, (0, 0))
         drop_index = 0
         while drop_index < len(drops):
@@ -47,5 +46,4 @@ async def run():
             drop.wind = drop.wind * 0.95 + 0.05 * set_wind
 
         pygame.display.flip()
-        exit_event = is_exit_event()
         await asyncio.sleep(MATRIX_SPEED_DALAY / 1000)
